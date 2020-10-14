@@ -16,9 +16,8 @@ class ServiceProviderController extends Controller
      */
     public function index()
     {
-        $serviceproviders = DB::table('users')->where('user_type', 'serviceuser')
-->get();
-
+        $serviceproviders = DB::table('users')->where('user_type', 'ServiceProvider')->get();
+       
 return new ServiceProviderCollection($serviceproviders);
     }
 
@@ -86,5 +85,12 @@ return new ServiceProviderCollection($serviceproviders);
     public function destroy(ServiceProvider $serviceProvider)
     {
         //
+    }
+   public static function categoryName($id)
+    {
+         $service_id = DB::table('service_provider-service')->where('service_provider_id', $id)->get()->pluck('service_id');
+        $category_id = DB::table('service_category')->where('service_id', $service_id)->get()->pluck('category_id');
+        $categories_name  = DB::table('categories')->where('id', $category_id)->get()->pluck('name');
+        return $categories_name;
     }
 }

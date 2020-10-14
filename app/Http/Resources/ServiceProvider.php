@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Controllers\ServiceProviderController;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ServiceProvider extends JsonResource
@@ -22,6 +23,7 @@ class ServiceProvider extends JsonResource
             'isVerified' =>isset($this->verified)? $this->verified:'not_verified',
             'address'=>$this->address,
             'phoneno'=>$this->phoneno,
+            'occupation' =>ServiceProviderController::categoryName($this->id),
             'avatar'=>$this->avatar,
             'user_type'=>$this->user_type,
             'creationDate' => (string)$this->created_at,
