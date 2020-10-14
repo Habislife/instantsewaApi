@@ -27,6 +27,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['middleware'=>'auth:api'],function(){
 Route::resource('category','CategoryController');
 Route::resource('subcategory','SubCategoryController');
+Route::resource('category.subcategory','CategorySubCategoryController');
 Route::resource('service','ServiceController');
 Route::resource('serviceprovider','ServiceProviderController');
 });
