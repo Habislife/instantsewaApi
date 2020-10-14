@@ -2,9 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Service;
+use App\User;
 
-class ServiceProvider extends Model
+
+class ServiceProvider extends User
 {
-    //
+      public function services()
+    {
+    	return $this->hasMany(Service::class);
+    }
 }

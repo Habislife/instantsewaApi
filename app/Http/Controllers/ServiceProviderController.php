@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ServiceProviderCollection;
 use App\Models\ServiceProvider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ServiceProviderController extends Controller
 {
@@ -14,7 +16,10 @@ class ServiceProviderController extends Controller
      */
     public function index()
     {
-        //
+        $serviceproviders = DB::table('users')->where('user_type', 'serviceuser')
+->get();
+
+return new ServiceProviderCollection($serviceproviders);
     }
 
     /**
