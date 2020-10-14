@@ -60,7 +60,8 @@ class AuthController extends Controller
     	}
     	public function user(Request $request)
     	{
-    		return $request->user();
+           return response(['data'=>$request->user()],200);
+    		 
     	}
 private function getResponse(User $user)
 {
@@ -69,7 +70,9 @@ private function getResponse(User $user)
     	$token->expires_at = Carbon::now()->addWeeks(1);
     	$token->save();
 
-    	return response(['accessToken'=>$tokenResult->accessToken,
+    	return response(
+            ['user' => $user,
+            'accessToken'=>$tokenResult->accessToken,
     		'tokenType'=>"Bearer",
     		'expiresAt'=>Carbon::parse($token->expires_at)->toDateTimeString()],200);
 
