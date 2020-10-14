@@ -12,7 +12,9 @@ class AuthController extends Controller
 {
     public function authFailed()
     {
-        return response('aunthenticated, make sure the authorization is correct',401);
+        //return response('aunthenticated, make sure the authorization is correct',401);
+
+        return response('Hey Amrita You are Dumb.This is joke',401);
     }
     public function register(Request $request)
     {
