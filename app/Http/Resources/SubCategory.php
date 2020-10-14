@@ -20,6 +20,7 @@ class SubCategory extends JsonResource
             'identifier' => $this->id,
             'title' => $this->name,
             'details'=>$this->description,
+            'image' => $this->image,
            'category' => CategorySubCategoryController::categoryName($this->category_id),
             'creationDate' =>$this->created_at,
             'lastChange' => $this->updated_at,
