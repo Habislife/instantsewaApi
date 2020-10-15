@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ServiceCollection;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        
+     return new ServiceCollection(Service::paginate(10));   
     }
 
     /**
