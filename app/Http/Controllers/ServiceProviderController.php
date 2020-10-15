@@ -21,36 +21,13 @@ class ServiceProviderController extends Controller
 return new ServiceProviderCollection($serviceproviders);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+   
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function show($id)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\ServiceProvider  $serviceProvider
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ServiceProvider $serviceProvider)
-    {
-        //
+         $serviceproviders = DB::table('users')->where('id', $id)->get();
+       
+return new ServiceProviderCollection($serviceproviders);
     }
 
     /**
