@@ -31,6 +31,15 @@ class Foriegnkey extends Migration
              $table->foreign('service_user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
          });
+          
+          Schema::table('favourites', function($table) {
+             $table->foreign('service_provider_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+
+         });
+          Schema::table('favourites', function($table) {
+             $table->foreign('service_user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+
+         });
     }
 
     /**

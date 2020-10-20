@@ -16,17 +16,6 @@ class FavouriteController extends Controller
     {
         //
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -35,7 +24,15 @@ class FavouriteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $rules = [
+            'service_user_id' => 'required',
+            'service_provider_id' => 'required',
+        ];
+
+        $this->validate($request, $rules);
+
+        $favourite = Favourite::create($request->all());
+        return $favourite;
     }
 
     /**
@@ -80,6 +77,8 @@ class FavouriteController extends Controller
      */
     public function destroy(Favourite $favourite)
     {
-        //
+          $favourite->delete();
+
+        return $favourite;
     }
 }

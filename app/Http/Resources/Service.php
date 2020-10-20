@@ -21,8 +21,6 @@ class Service extends JsonResource
             'details'=>$this->description,
             'time_need'=>$this->quantity,
              'picture' => $this->image,
-             'sub_category_name' =>SubCategoryServiceController::subcategoriesName($this->sub_categories_id),
-            'sub_category_image' =>SubCategoryServiceController::subcategoriesImage($this->sub_categories_id),
             'price' => $this->payment,
             'creationDate' =>$this->created_at,
             'lastChange' => $this->updated_at,
