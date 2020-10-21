@@ -17,8 +17,7 @@ class ServiceProviderController extends Controller
     public function index()
     {
         $serviceproviders = DB::table('users')->where('user_type', 'ServiceProvider')->get();
-       
-return new ServiceProviderCollection($serviceproviders);
+       return new ServiceProviderCollection($serviceproviders);
     }
 
    
@@ -26,9 +25,8 @@ return new ServiceProviderCollection($serviceproviders);
     public function show($id)
     {
          $serviceproviders = DB::table('users')->where('id', $id)->get();
-       
-return new ServiceProviderCollection($serviceproviders);
-    }
+         return new ServiceProviderCollection($serviceproviders);
+   }
 
     /**
      * Show the form for editing the specified resource.

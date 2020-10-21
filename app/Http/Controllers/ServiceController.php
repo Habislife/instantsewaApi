@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\ServiceResourceCollection;
 use App\Http\Resources\ServiceResource;
+use App\Http\Resources\ServiceResourceCollection;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ServiceController extends Controller
 {
@@ -46,9 +47,10 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function show(Service $service)
+    public function show($id)
     {
-        return  new ServiceResource($service);
+        $service = DB::table('services')->where('id', $id)->get();
+        return  new ServiceResourceCollection($service);
     }
 
     /**
