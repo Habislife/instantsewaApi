@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ServiceCollection;
-use App\Models\Service;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -47,7 +46,7 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
-        //
+        return  new ServiceResource($service);
     }
 
     /**
@@ -58,7 +57,7 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        return  new ServiceCollection($service);  
+          
     }
 
     /**
