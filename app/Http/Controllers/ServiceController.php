@@ -58,7 +58,7 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+        return  new ServiceCollection($service);  
     }
 
     /**
