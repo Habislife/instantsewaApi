@@ -32,5 +32,6 @@ Route::resource('subcategory.service','SubCategoryServiceController');
 Route::resource('service','ServiceController');
 Route::resource('serviceprovider','ServiceProviderController');
 Route::resource('favourite','FavouriteController');
+Route::resource('serviceuser.favourite','ServiceUserFavouriteController',['only'=>['index']]);
 Route::post('checker','FavouriteCheckerController@isAvailable');
 });
