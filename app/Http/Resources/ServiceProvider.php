@@ -24,6 +24,7 @@ class ServiceProvider extends JsonResource
             'address'=>$this->address,
             'phoneno'=>$this->phoneno,
             'occupation' =>ServiceProviderController::categoryName($this->id),
+            'rate'=>2,
             'avatar'=>$this->avatar,
             'user_type'=>$this->user_type,
             'creationDate' => (string)$this->created_at,

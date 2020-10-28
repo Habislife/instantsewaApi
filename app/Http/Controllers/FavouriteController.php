@@ -43,7 +43,7 @@ class FavouriteController extends Controller
      */
     public function show(Favourite $favourite)
     {
-        //
+        
     }
 
     /**

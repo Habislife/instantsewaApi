@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ServiceProviderCollection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,8 +15,14 @@ class ServiceUserFavouriteController extends Controller
      */
     public function index($id)
     {
-        $favourite = DB::table('favourites')->where('service_user_id', $id)->get();
-        return $favourite;
+        $serviceproviders = DB::table('users')->where('id', $id)->get();
+        $count = DB::table('favourites')->where('service_user_id',$id)->get()->count();
+        $favourite = DB::table('favourites')->where('service_user_id',$id)->get()->pluck('service_provider_id');
+         
+        $serviceproviders = DB::table('users')
+            ->whereIn('id', $favourite)
+            ->get();
+              return new ServiceProviderCollection($serviceproviders);   
     }
     
 }
