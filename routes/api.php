@@ -34,4 +34,5 @@ Route::resource('serviceprovider','ServiceProviderController');
 Route::resource('favourite','FavouriteController');
 Route::resource('serviceuser.favourite','ServiceUserFavouriteController',['only'=>['index']]);
 Route::post('checker','FavouriteCheckerController@isAvailable');
+Route::post('deleteFavourite','FavouriteCheckerController@deleteFavourite');
 });

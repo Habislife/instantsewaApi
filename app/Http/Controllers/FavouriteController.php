@@ -69,16 +69,4 @@ class FavouriteController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Favourite  $favourite
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Favourite $favourite)
-    {
-          $favourite->delete();
-
-        return $favourite;
-    }
 }
