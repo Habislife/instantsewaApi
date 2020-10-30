@@ -35,4 +35,7 @@ Route::resource('favourite','FavouriteController');
 Route::resource('serviceuser.favourite','ServiceUserFavouriteController',['only'=>['index']]);
 Route::post('checker','FavouriteCheckerController@isAvailable');
 Route::post('deleteFavourite','FavouriteCheckerController@deleteFavourite');
+Route::post('fullnameUpdate','ServiceUserUpdate@updateFullName');
+Route::post('addressUpdate','ServiceUserUpdate@updateAddress');
+Route::post('phoneNoUpdate','ServiceUserUpdate@updatePhoneNo');
 });
