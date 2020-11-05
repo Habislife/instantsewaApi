@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\ServiceResource;
-use App\Http\Resources\ServiceResourceCollection;
-use App\Models\Service;
+use App\Models\Address;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
-
-class ServiceController extends Controller
+class AddressController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +15,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-     return new ServiceResourceCollection(Service::paginate(10));   
+        //
     }
 
     /**
@@ -38,41 +35,51 @@ class ServiceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+{
+    $validator = Validator::make($request->all(),[
+            'address_address' => 'required|string|max:255',
+            'address_latitude' => 'required',
+            'address_longitude' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response(['errors'=>$validator->errors()],422);
+        }
+        $address = new Address();
+       $address->address_address = $request->address_address;
+      $address->address_latitude = $request->address_latitude;
+     $address->address_longitude =$request->address_longitude;
+        $address->save();
+}
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Address  $address
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Address $address)
     {
         //
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Service  $service
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $service = DB::table('services')->where('id', $id)->get();
-        return  new ServiceResourceCollection($service);
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Service  $service
+     * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function edit(Service $service)
+    public function edit(Address $address)
     {
-          
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Service  $service
+     * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service)
+    public function update(Request $request, Address $address)
     {
         //
     }
@@ -80,10 +87,10 @@ class ServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Service  $service
+     * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy(Address $address)
     {
         //
     }

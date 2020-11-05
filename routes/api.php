@@ -39,3 +39,4 @@ Route::post('fullnameUpdate','ServiceUserUpdate@updateFullName');
 Route::post('addressUpdate','ServiceUserUpdate@updateAddress');
 Route::post('phoneNoUpdate','ServiceUserUpdate@updatePhoneNo');
 });
+Route::resource('address','AddressController');
