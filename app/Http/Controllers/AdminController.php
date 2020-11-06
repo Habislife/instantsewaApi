@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Resources\UserCollection;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
       public function index()
     {
-        return new UserCollection(User::paginate(10));
+        $count = DB::table('users')->count();
+        return $count;
     }
 
 }
