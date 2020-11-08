@@ -40,10 +40,6 @@ class CreateForiegnkeyTable extends Migration
              $table->foreign('service_user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
          });
-           Schema::table('users', function($table) {
-             $table->foreign('address_id')->references('id')->on('addresses')->onDelete('cascade')->onUpdate('cascade');
-
-         });
     }
 
     /**

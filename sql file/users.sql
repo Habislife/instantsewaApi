@@ -24,7 +24,7 @@ START TRANSACTION;
 -- Dumping data for table users
 --
 
-INSERT INTO users (id, username, fullname, email, email_verified_at, `password`, address, phoneno, avatar, remember_token, verified, verification_token, user_type, created_at, updated_at, deleted_at) VALUES
+INSERT INTO users (id, username, fullname, email, email_verified_at, `password`, address_address, phoneno, avatar, remember_token, verified, verification_token, user_type, created_at, updated_at, deleted_at) VALUES
 (1, 'ram', 'Ram Poudel', 'ram@gmail.com', NULL, 'ram12345', 'Rambazar, Pokhara', '9807845678', NULL, NULL, NULL, NULL, 'ServiceProvider', '2020-10-05 07:28:32', '2020-10-12 10:00:32', '2020-10-13 16:12:32'),
 (2, 'shyam', 'Shyam Thapa', 'shyam@gmail.com', NULL, 'shyam12345', 'Lamachaur, Pokhara', '9803432580', NULL, NULL, NULL, NULL, 'ServiceProvider', '2020-10-01 15:14:42', '2020-10-06 17:08:54', '2020-10-07 14:09:17'),
 (3, 'hari', 'Hari Bahadur', 'hari@gmail.com', NULL, 'hari12345', 'Hari Chowk, Pokhara', '9821389089', NULL, NULL, NULL, NULL, 'ServiceProvider', '2020-10-03 05:23:09', '2020-10-06 07:30:06', '2020-10-08 11:14:41'),
