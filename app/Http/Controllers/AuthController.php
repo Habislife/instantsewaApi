@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -60,7 +61,7 @@ class AuthController extends Controller
     	}
     	public function user(Request $request)
     	{
-           return response(['data'=>$request->user()],200);
+        return response(['data'=>$request->user()],200);
     		 
     	}
 private function getResponse(User $user)

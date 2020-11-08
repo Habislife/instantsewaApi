@@ -30,12 +30,7 @@ class ServiceUserUpdate extends Controller
         if ($validator->fails()) {
             return response(['errors'=>$validator->errors()],422);
         }
-        $address = new Address();
-       $address->address_address = $request->address_address;
-      $address->address_latitude = $request->address_latitude;
-     $address->address_longitude =$request->address_longitude;
-    $address->save();
-        DB::table('users')->where('id',$request['service_user_id'])->update(['address_id'=>$address->id]);
+        DB::table('users')->where('id',$request['service_user_id'])->update(['address_address'=>$request['address_address'],'address_latitude'=>$request['address_latitude'],'address_longitude'=>$request['address_longitude'],]);
     }
 
         public function updatePhoneNo(Request $request)
