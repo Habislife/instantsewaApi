@@ -22,7 +22,9 @@ class CreateOperationsTable extends Migration
             $table->string('address');
             $table->boolean('flag');
             $table->string('description');
-            $table->BigInteger('rating_review_id')->unsigned();
+            $table->BigInteger('rating_review_id')->unsigned()->nullable();
+             $table->dateTime('start_time')->nullable();
+            $table->dateTime('end_time')->nullable();
             $table->timestamp('completed_time')->nullable();
             $table->timestamps();
             $table->softDeletes();

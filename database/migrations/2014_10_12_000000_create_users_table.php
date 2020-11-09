@@ -22,8 +22,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('address_address')->nullable();
-            $table->double('address_latitude')->nullable();
-            $table->double('address_longitude')->nullable();
+            $table->double('address_latitude', 15, 8)->nullable();
+            $table->double('address_longitude', 15, 8)->nullable();
             $table->string('phoneno')->nullable();
             $table->string('gender')->nullable();
             $table->string('avatar')->nullable();

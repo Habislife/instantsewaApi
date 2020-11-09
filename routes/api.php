@@ -38,6 +38,6 @@ Route::post('deleteFavourite','FavouriteCheckerController@deleteFavourite');
 Route::post('fullnameUpdate','ServiceUserUpdate@updateFullName');
 Route::post('addressUpdate','ServiceUserUpdate@updateAddress');
 Route::post('phoneNoUpdate','ServiceUserUpdate@updatePhoneNo');
+Route::post('serviceproviderselection','ServiceProviderSelectionController@selectionList');
 });
-Route::resource('address','AddressController');
 Route::resource('admin','AdminController');

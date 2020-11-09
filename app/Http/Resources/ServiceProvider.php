@@ -21,7 +21,7 @@ class ServiceProvider extends JsonResource
             'fullname'=>$this->fullname,
             'email' => $this->email,
             'isVerified' =>isset($this->verified)? $this->verified:'not_verified',
-            'address'=>$this->address,
+            'address'=>$this->address_address,
             'phoneno'=>$this->phoneno,
             'occupation' =>ServiceProviderController::categoryName($this->id),
             'rate'=>2,

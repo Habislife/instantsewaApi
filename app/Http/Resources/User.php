@@ -19,7 +19,7 @@ class User extends JsonResource
             'fullname'=>$this->fullname,
             'email' =>$this->email,
             'isVerified' =>$this->verified,
-            'address'=>$this->address,
+            'address'=>$this->address_address,
             'phoneno'=>$this->phoneno,
             'avatar'=>$this->avatar,
             'user_type'=>$this->user_type,
