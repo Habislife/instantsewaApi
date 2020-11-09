@@ -15,10 +15,7 @@ class ServiceUserFavouriteController extends Controller
      */
     public function index($id)
     {
-        $serviceproviders = DB::table('users')->where('id', $id)->get();
-        $count = DB::table('favourites')->where('service_user_id',$id)->get()->count();
-        $favourite = DB::table('favourites')->where('service_user_id',$id)->get()->pluck('service_provider_id');
-         
+        $favourite = DB::table('favourites')->where('service_user_id',$id)->get()->pluck('service_provider_id');         
         $serviceproviders = DB::table('users')
             ->whereIn('id', $favourite)
             ->get();
