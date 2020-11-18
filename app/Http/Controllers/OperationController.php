@@ -38,7 +38,6 @@ class OperationController extends Controller
             'service_id' =>'required',
             'serviceusers_latitude' =>'required',
             'serviceusers_longitude' =>'required',
-            'serviceusers_longitude' =>'required',
             'serviceusers_address' =>'required',
             'serviceprovider_id' => 'required',
             'startDate' =>'required',

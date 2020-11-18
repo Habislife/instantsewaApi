@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2020 at 10:38 PM
+-- Generation Time: Nov 18, 2020 at 11:50 AM
 -- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,24 +18,27 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `instantsewa`
+-- Database: instantsewa
 --
 
 --
--- Dumping data for table `service_provider-service`
+-- Dumping data for table service_provider-service
 --
 
-INSERT INTO `service_provider-service` (`service_provider_id`, `service_id`) VALUES
-(11, 11),
-(10, 5),
-(12, 3),
-(3, 3),
-(4, 23),
-(5, 19),
-(6, 16),
-(7, 17),
-(8, 15),
-(9, 25);
+INSERT INTO service_provider-service (service_provider_id, subcategories_id) VALUES
+(3, 1),
+(4, 2),
+(5, 3),
+(6, 4),
+(7, 5),
+(8, 9),
+(9, 8),
+(10, 7),
+(11, 6),
+(12, 1),
+(3, 2),
+(4, 1),
+(6, 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
