@@ -23,20 +23,28 @@ class ServiceProviderSelectionController extends Controller
         $this->validate($request, $rules);
         $start = Carbon::parse($request->startDate);
         $end = Carbon::parse($request->endDate);
-        $start=$start->subMinutes(14);
-        $end = $end->addMinutes(14);
         $service_providers_id = DB::table('service_provider-service')->where('subcategories_id', $request['subcategories_id'])->get()->pluck('service_provider_id');
-         $free_service_providers = DB::table('operations')->whereNotBetween('start_time', [$start, $end])->whereNotBetween('end_time', [$start, $end])->get()->pluck('service_provider_id');
+         $free_service_providers = DB::table('operations')->whereBetween('start_time', [$start, $end])->whereBetween('end_time', [$start, $end])->get()->pluck('service_provider_id');
+         $list_count=count($service_providers_id);
+         $list_count2=count($free_service_providers);
+         for($i=0;$i<$list_count;$i++)
+         {
+         for($j=0;$j<$list_count2;$j++)
+         {
+            if($service_providers_id[$i]==$free_service_providers[$j]){
+                unset($service_providers_id[$i]);;
+            }
+        }
+        }
          $location = DB::table('users')
          ->select('id','username', 'address_latitude', 'address_longitude','address_address', DB::raw(sprintf(
              '(6371 * acos(cos(radians(%1$.7f)) * cos(radians(address_latitude)) * cos(radians(address_longitude) - radians(%2$.7f)) + sin(radians(%1$.7f)) * sin(radians(address_latitude)))) AS distance',
             $request->input('serviceusers_latitude'),
             $request->input('serviceusers_longitude')
-        )))->whereIn('id',$free_service_providers)
+        )))->whereIn('id',$service_providers_id)
         ->having('distance', '<', 50)
         ->orderBy('distance', 'asc')
         ->get();
-        //return $service_providers_id;
          return new ServiceProviderSelectionCollection($location);
     }
 }

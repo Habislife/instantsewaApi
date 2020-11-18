@@ -24,7 +24,6 @@ class OperationController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -35,7 +34,21 @@ class OperationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'service_id' =>'required',
+            'serviceusers_latitude' =>'required',
+            'serviceusers_longitude' =>'required',
+            'serviceusers_longitude' =>'required',
+            'serviceusers_address' =>'required',
+            'serviceprovider_id' => 'required',
+            'startDate' =>'required',
+            'endDate' =>'required',
+        ];
+
+        $this->validate($request, $rules);
+
+        $operation = Operation::create($request->all());
+        return $operation;
     }
 
     /**
