@@ -64,8 +64,23 @@ class ServiceProviderController extends Controller
    public static function categoryName($id)
     {
          $subcategories_id = DB::table('service_provider-service')->where('service_provider_id', $id)->get()->pluck('subcategories_id');
-        $categories_id = DB::table('sub_categories')->where('id', $subcategories_id)->get()->pluck('category_id');
-        $categories_name=DB::table('categories')->where('id', $subcategories_id)->get()->pluck('name');
-        return $categories_name;
+        $categories_id = DB::table('sub_categories')->whereIn('id', $subcategories_id)->get()->pluck('category_id');
+        $categories_name=DB::table('categories')->whereIn('id', $subcategories_id)->get()->pluck('name');
+        $count = count($categories_name);
+        $occupation="";
+        for ($i=0; $i <$count ; $i++) { 
+            if($i==$count-2)
+            {
+                $occupation=$occupation.$categories_name[$i]."&";
+             }
+            elseif($i==$count-1){
+                $occupation=$occupation.$categories_name[$i].".";
+            }
+            else{
+                $occupation=$occupation.$categories_name[$i].",";
+            }
+        }
+            
+        return $occupation;
     }
 }

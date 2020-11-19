@@ -13,7 +13,7 @@ class ServiceProviderSelectionController extends Controller
     public function selectionList(Request $request)
     {
     	$rules = [
-            'subcategories_id' =>'required',
+            'subcategories_name' =>'required',
             'serviceusers_latitude' =>'required',
             'serviceusers_longitude' =>'required',
             'startDate' =>'required',
@@ -23,7 +23,8 @@ class ServiceProviderSelectionController extends Controller
         $this->validate($request, $rules);
         $start = Carbon::parse($request->startDate);
         $end = Carbon::parse($request->endDate);
-        $service_providers_id = DB::table('service_provider-service')->where('subcategories_id', $request['subcategories_id'])->get()->pluck('service_provider_id');
+        $subcategory_id = DB::table('sub_categories')->where('name', $request['subcategories_name'])->get()->pluck('id');
+        $service_providers_id = DB::table('service_provider-service')->where('subcategories_id',$subcategory_id)->get()->pluck('service_provider_id');
          $free_service_providers = DB::table('operations')->whereBetween('start_time', [$start, $end])->whereBetween('end_time', [$start, $end])->get()->pluck('service_provider_id');
          $list_count=count($service_providers_id);
          $list_count2=count($free_service_providers);
