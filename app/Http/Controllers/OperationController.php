@@ -36,12 +36,14 @@ class OperationController extends Controller
     {
         $rules = [
             'service_id' =>'required',
-            'serviceusers_latitude' =>'required',
-            'serviceusers_longitude' =>'required',
-            'serviceusers_address' =>'required',
-            'serviceprovider_id' => 'required',
-            'startDate' =>'required',
-            'endDate' =>'required',
+            'quantity'=>'required',
+            'address_latitude' =>'required',
+            'address_longitude' =>'required',
+            'address_address' =>'required',
+            'service_provider_id' => 'required',
+            'service_user_id' => 'required',
+            'start_time' =>'required',
+            'end_time' =>'required',
         ];
 
         $this->validate($request, $rules);
