@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cart;
-use App\Models\Service;
+use App\Models\CartGroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
-class CartController extends Controller
+class CartGroupController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +26,7 @@ class CartController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -37,29 +37,25 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = [
-            'service_name' =>'required',
-            'quantity'=>'required',
-            'cart_collection_id'=>'required'
-        ];
-
-        $this->validate($request, $rules);
-        $service_id = DB::table('services')->select('id')->where('name', $request['service_name'])->first();
-         $cart = new Cart();
-       $cart->service_id  = $service_id->id;
-      $cart->quantity = $request->quantity;
-     $cart->cart_collection_id =$request->cart_collection_id;
-        $cart->save();
-        return $cart;
+        $validator = Validator::make($request->all(),[
+            'service_user' => 'required|string|max:255',
+        ]);
+        if ($validator->fails()) {
+            return response(['errors'=>$validator->errors()],422);
+        }
+        $cart_group = new CartGroup();
+        $cart_group->save();
+         DB::table('cart_groups')->where('id',$cart_group->id)->update(['collection_name'=>$request['service_user'].$cart_group->id]);
+         return $cart_group->id;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Cart  $cart
+     * @param  \App\Models\CartGroup  $cartGroup
      * @return \Illuminate\Http\Response
      */
-    public function show(Cart $cart)
+    public function show(CartGroup $cartGroup)
     {
         //
     }
@@ -67,10 +63,10 @@ class CartController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Cart  $cart
+     * @param  \App\Models\CartGroup  $cartGroup
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cart $cart)
+    public function edit(CartGroup $cartGroup)
     {
         //
     }
@@ -79,10 +75,10 @@ class CartController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Cart  $cart
+     * @param  \App\Models\CartGroup  $cartGroup
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cart $cart)
+    public function update(Request $request, CartGroup $cartGroup)
     {
         //
     }
@@ -90,10 +86,10 @@ class CartController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Cart  $cart
+     * @param  \App\Models\CartGroup  $cartGroup
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cart $cart)
+    public function destroy(CartGroup $cartGroup)
     {
         //
     }

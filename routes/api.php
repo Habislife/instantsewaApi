@@ -33,6 +33,8 @@ Route::resource('service','ServiceController');
 Route::resource('serviceprovider','ServiceProviderController');
 Route::resource('favourite','FavouriteController');
 Route::resource('book','OperationController');
+Route::resource('cartgroup','CartGroupController');
+Route::resource('cart','CartController');
 Route::resource('serviceuser.favourite','ServiceUserFavouriteController',['only'=>['index']]);
 Route::post('checker','FavouriteCheckerController@isAvailable');
 Route::post('deleteFavourite','FavouriteCheckerController@deleteFavourite');

@@ -35,8 +35,7 @@ class OperationController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'service_id' =>'required',
-            'quantity'=>'required',
+            'cart_collection_id' =>'required',
             'address_latitude' =>'required',
             'address_longitude' =>'required',
             'address_address' =>'required',
@@ -46,9 +45,17 @@ class OperationController extends Controller
             'end_time' =>'required',
         ];
 
-        $this->validate($request, $rules);
-
-        $operation = Operation::create($request->all());
+       $this->validate($request, $rules);
+         $operation = new Operation();
+       $operation->cart_collection_id  = $request->cart_collection_id;
+       $operation->address_latitude  = $request->address_latitude;
+       $operation->address_longitude  = $request->address_longitude;
+       $operation->address_address  = $request->address_address;
+       $operation->service_provider_id  = $request->service_provider_id;
+       $operation->service_user_id  = $request->service_user_id;
+       $operation->start_time  = $request->start_time;
+       $operation->end_time  = $request->end_time;
+      $operation->save();
         return $operation;
     }
 

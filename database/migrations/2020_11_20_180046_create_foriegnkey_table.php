@@ -19,12 +19,20 @@ class CreateForiegnkeyTable extends Migration
         Schema::table('sub_categories', function($table) {
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
         });
-          Schema::table('operations', function($table) {
+          Schema::table('carts', function($table) {
              $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade')->onUpdate('cascade');
+
+         });
+          Schema::table('carts', function($table) {
+             $table->foreign('cart_collection_id')->references('id')->on('cart_groups')->onDelete('cascade')->onUpdate('cascade');
 
          });
           Schema::table('operations', function($table) {
              $table->foreign('service_provider_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+
+         });
+          Schema::table('operations', function($table) {
+             $table->foreign('cart_collection_id')->references('id')->on('cart_groups')->onDelete('cascade')->onUpdate('cascade');
 
          });
           Schema::table('operations', function($table) {
