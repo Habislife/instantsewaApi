@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ServiceProviderCollection;
 use App\Http\Resources\ServiceProviderSelectionCollection;
+use App\Http\Resources\ServiceResourceCollection;
+use App\Http\Resources\ServiceSelectionCollection;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ServiceProviderSelectionController extends Controller
 {
-    public function selectionList(Request $request)
+    public function serviceProviderselectionListByDistance(Request $request)
     {
     	$rules = [
             'subcategories_name' =>'required',
@@ -47,5 +49,25 @@ class ServiceProviderSelectionController extends Controller
         ->orderBy('distance', 'asc')
         ->get();
          return new ServiceProviderSelectionCollection($location);
+    }
+
+     public function serviceSelectionList(Request $request)
+    {
+        $rules = [
+            'service_provider_id'=>'required',
+        ];
+        
+        $this->validate($request, $rules);
+        $subcategories_id = DB::table('service_provider-service')->where('service_provider_id',$request['service_provider_id'])->get()->pluck('subcategories_id');
+        $serviceList = DB::table('sub_categories')->select('id','name')->whereIn('id',$subcategories_id)->get();
+        return new ServiceSelectionCollection($serviceList);
+
+}
+
+    public static function ServiceList($id)
+    {
+        
+        $serviceList = DB::table('services')->where('sub_categories_id',$id)->get();
+        return new ServiceResourceCollection($serviceList);  
     }
 }

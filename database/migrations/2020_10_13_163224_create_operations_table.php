@@ -22,7 +22,11 @@ class CreateOperationsTable extends Migration
            $table->string('address_address');
             $table->double('address_latitude', 15, 8);
             $table->double('address_longitude', 15, 8);
-           $table->boolean('flag')->default(0);
+           $table->boolean('booked_flag')->default(0);
+           $table->boolean('start_flag')->default(0);
+           $table->boolean('completed_flag')->default(0);
+           $table->boolean('payment_flag')->default(0);
+           $table->boolean('cancel_flag')->default(0);
            $table->BigInteger('rating_review_id')->unsigned()->nullable();
            $table->dateTime('start_time');
             $table->dateTime('end_time');
