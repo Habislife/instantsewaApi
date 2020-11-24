@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CartResourceCollection;
+use App\Http\Resources\OperationResource;
+use App\Http\Resources\OperationResourceCollection;
 use App\Models\Operation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OperationController extends Controller
 {
@@ -65,9 +69,11 @@ class OperationController extends Controller
      * @param  \App\Models\Operation  $operation
      * @return \Illuminate\Http\Response
      */
-    public function show(Operation $operation)
+    public function show($id)
     {
-        //
+        $operation = DB::table('operations')->where('id',$id)->get();
+        //return $operation;
+         return new OperationResourceCollection($operation);
     }
 
     /**
@@ -101,6 +107,18 @@ class OperationController extends Controller
      */
     public function destroy(Operation $operation)
     {
-        //
+        
+    }
+    public static function serviceProviderName($id)
+    {
+         $serviceProviderName = DB::table('users')->select('username')->where('id', $id)->first();
+            
+        return $serviceProviderName->username;
+    }
+    public static function CartDetails($id)
+    {
+         $cartDetails = DB::table('carts')->where('id', $id)->get();
+            
+        return new CartResourceCollection($cartDetails);
     }
 }

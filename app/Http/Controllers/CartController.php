@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CartResourceCollection;
 use App\Models\Cart;
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -59,9 +60,11 @@ class CartController extends Controller
      * @param  \App\Models\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function show(Cart $cart)
+    public function show($id)
     {
-        //
+        $cart = DB::table('carts')->where('id',$id)->get();
+        //return $operation;
+         return new CartResourceCollection($cart);
     }
 
     /**
@@ -96,5 +99,23 @@ class CartController extends Controller
     public function destroy(Cart $cart)
     {
         //
+    }
+    public static function ServiceName($id)
+    {
+         $serviceProviderName = DB::table('services')->select('name')->where('id',$id)->first();
+            
+        return $serviceProviderName->name;
+    }
+    public static function ServiceImage($id)
+    {
+         $serviceProviderName = DB::table('services')->select('image')->where('id',$id)->first();
+            
+        return $serviceProviderName->image;
+    }
+    public static function ServicePrice($id)
+    {
+         $serviceProviderName = DB::table('services')->select('payment')->where('id',$id)->first();
+            
+        return $serviceProviderName->payment;
     }
 }

@@ -50,7 +50,6 @@ class CategoryController extends Controller
     {
         return $category;
     }
-
     /**
      * Show the form for editing the specified resource.
      *
