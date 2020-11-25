@@ -27,7 +27,6 @@ class CreateOperationsTable extends Migration
            $table->boolean('completed_flag')->default(0);
            $table->boolean('payment_flag')->default(0);
            $table->boolean('cancel_flag')->default(0);
-           $table->BigInteger('rating_review_id')->unsigned()->nullable();
            $table->dateTime('start_time');
             $table->dateTime('end_time');
             $table->timestamp('completed_time')->nullable();

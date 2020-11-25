@@ -19,10 +19,10 @@ class OperationResource extends JsonResource
         return [
             'identifier' => $this->id,
             'cartGroupName'=>TrackerController::CartCollectionName($this->cart_collection_id),
-            'serviceProviderid'=>$this->service_provider_id,
+            'serviceProviderId'=>$this->service_provider_id,
             'serviceProviderName'=>OperationController::serviceProviderName($this->service_provider_id),
             'service'=>OperationController::CartDetails($this->cart_collection_id),
-            'completedTime'=> (string)$this->start_time,
+            'completedTime'=> (string)$this->completed_time,
             'startTime' => (string)$this->start_time,
             'endTime' => (string)$this->end_time,
             'status' => TrackerController::Status($this->id),

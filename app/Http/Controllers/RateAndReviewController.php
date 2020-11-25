@@ -35,7 +35,20 @@ class RateAndReviewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'rating' =>'required',
+            'service_provider_id' => 'required',
+            'service_user_id' => 'required',
+        ];
+
+       $this->validate($request, $rules);
+         $rateAndReview = new RateAndReview();
+       $rateAndReview->rating  = $request->rating;
+       $rateAndReview->service_provider_id  = $request->service_provider_id;
+       $rateAndReview->service_user_id  = $request->service_user_id;
+      $rateAndReview->save();
+        return $rateAndReview;
+        
     }
 
     /**

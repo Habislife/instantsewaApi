@@ -35,6 +35,7 @@ Route::resource('favourite','FavouriteController');
 Route::post('ongoingtracker','TrackerController@OngoingTracker');
 Route::post('completedtracker','TrackerController@CompletedTracker');
 Route::resource('book','OperationController');
+Route::resource('rateandreview','RateAndReviewController');
 Route::resource('cartgroup','CartGroupController');
 Route::resource('cart','CartController');
 Route::resource('serviceuser.favourite','ServiceUserFavouriteController',['only'=>['index']]);

@@ -19,7 +19,7 @@ class CartResource extends JsonResource
             'identifier' => $this->id,
             'service_name' => CartController::ServiceName($this->service_id),
             'image'=>CartController::ServiceImage($this->service_id),
-            'qunatity'=>$this->quantity,
+            'quantity'=>$this->quantity,
             'price'=>CartController::ServicePrice($this->service_id),
             'creationDate' =>$this->created_at,
             'lastChange' => $this->updated_at

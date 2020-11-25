@@ -117,7 +117,7 @@ class OperationController extends Controller
     }
     public static function CartDetails($id)
     {
-         $cartDetails = DB::table('carts')->where('id', $id)->get();
+         $cartDetails = DB::table('carts')->where('cart_collection_id', $id)->get();
             
         return new CartResourceCollection($cartDetails);
     }
