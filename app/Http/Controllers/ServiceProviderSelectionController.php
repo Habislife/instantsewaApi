@@ -45,7 +45,7 @@ class ServiceProviderSelectionController extends Controller
             $request->input('serviceusers_latitude'),
             $request->input('serviceusers_longitude')
         )))->whereIn('id',$service_providers_id)
-        ->having('distance', '<', 50)
+        ->having('distance', '<', 5)
         ->orderBy('distance', 'asc')
         ->get();
          return new ServiceProviderSelectionCollection($location);
